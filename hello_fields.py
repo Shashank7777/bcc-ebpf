@@ -8,7 +8,7 @@ int hello(void *ctx) {
     return 0;
 }
 """
-
+# In BCC (BPF Compiler Collection), ctx is a pointer to the struct pt_regs structure.
 # load BPF program
 b = BPF(text=prog)
 b.attach_kprobe(event=b.get_syscall_fnname("clone"), fn_name="hello")
